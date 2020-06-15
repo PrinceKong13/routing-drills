@@ -1,26 +1,32 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Films from "./Films";
 import People from "./People";
 import Home from "./Home";
+import FilmPage from "./FilmPage";
+import PersonPage from "./PersonPage";
 
 const App = () => {
   return (
     <Router>
-      <button>
-        <Link to="/">Home</Link>
-      </button>
-      <button>
-        <Link to="/Films">Films</Link>
-      </button>
-      <button>
-        <Link to="/People">People</Link>
-      </button>
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route path="/Films" component={Films} />
-        <Route path="/People" component={People} />
-      </Switch>
+      <Fragment>
+        <button className="btn">
+          <Link to="/">Home</Link>
+        </button>
+        <button className="btn">
+          <Link to="/Films">Films</Link>
+        </button>
+        <button className="btn">
+          <Link to="/People">People</Link>
+        </button>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/Films" component={Films} />
+          <Route exact path="/People" component={People} />
+          <Route path="/Films/:id" component={FilmPage} />
+          <Route path="/People/:id" component={PersonPage} />
+        </Switch>
+      </Fragment>
     </Router>
   );
 };
